@@ -12,7 +12,7 @@ class KelasFactory extends Factory
     public function definition()
     {
         return [
-            'id_kelas' => $this->faker->unique()->numberBetween(1, 100),
+            'id' => $this->faker->unique()->numberBetween(1, 100),
             'nama_kelas' => $this->faker->randomElement(['X', 'XI', 'XII']),
             'keahlian' => $this->faker->word,
         ];

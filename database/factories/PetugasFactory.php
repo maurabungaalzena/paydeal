@@ -12,7 +12,7 @@ class PetugasFactory extends Factory
     public function definition()
     {
         return [
-            'id_petugas' => $this->faker->unique()->numberBetween(1, 100),
+            'id' => $this->faker->unique()->numberBetween(1, 100),
             'username' => $this->faker->unique()->userName,
             'password' => bcrypt('password'), // Menggunakan bcrypt untuk password
             'nama_petugas' => $this->faker->name,

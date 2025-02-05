@@ -15,12 +15,13 @@ class PembayaranFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_petugas' => Petugas::inRandomOrder()->first()->id_petugas ?? Petugas::factory(), 
-            'nisn' => Siswa::inRandomOrder()->first()->nisn ?? Siswa::factory(), 
+            'id' => $this->faker->numberBetween(1, 100),
+            'id_petugas' =>\App\Models\Petugas::inRandomOrder()->first(),
+            'nisn' => \App\Models\Siswa::inRandomOrder()->first(), 
             'tanggal_bayar' => $this->faker->date(), 
             'bulan_dibayar' => $this->faker->monthName(), 
             'tahun_dibayar' => $this->faker->year(),
-            'id_spp' => Spp::inRandomOrder()->first()->id_spp ?? Spp::factory(), 
+            'id_spp' =>\App\Models\Spp::inRandomOrder()->first(), 
             'jumlah_bayar' => $this->faker->randomElement([500000, 1000000, 1500000, 2000000]), 
         ];
     }
