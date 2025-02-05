@@ -8,12 +8,10 @@ return new class extends Migration {
     public function up()
     {
         Schema::create('kelas', function (Blueprint $table) {
-            $table->integer('id_kelas'); 
+            $table->id();
             $table->string('nama_kelas');
-            $table->string('keahlian'); 
+            $table->string('keahlian');
             $table->timestamps();
-
-            $table->primary('id_kelas'); 
         });
     }
 

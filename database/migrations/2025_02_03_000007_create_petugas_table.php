@@ -9,7 +9,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('petugas', function (Blueprint $table) {
-            $table->integer('id_petugas');
+            $table->id();
             $table->string('username')->unique();
             $table->string('password');
             $table->string('nama_petugas');
@@ -17,7 +17,7 @@ return new class extends Migration
             $table->timestamps();
 
 
-            $table->primary('id_petugas');
+
         });
     }
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Siswa;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,20 +13,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pembayarans', function (Blueprint $table) {
-            $table->id('id_pembayaran'); 
-            $table->integer('id_petugas'); 
-            $table->char('nisn', 10); 
+            $table->id(); 
+            $table->foreignId('id_petugas')->constrained('petugas')->onDelete('cascade'); 
+            $table->foreignId('nisn')->constrained('siswa')->onDelete('cascade'); 
             $table->date('tanggal_bayar');
             $table->string('bulan_dibayar'); 
             $table->year('tahun_dibayar'); 
-            $table->integer('id_spp'); 
+            $table->foreignId('id_spp')->constrained('spp')->onDelete('cascade'); 
             $table->integer('jumlah_bayar'); 
             $table->timestamps(); 
             
-            // Tambahkan foreign key jika diperlukan
-            $table->foreign('id_petugas')->references('id_petugas')->on('petugas')->onDelete('cascade');
-            $table->foreign('nisn')->references('nisn')->on('siswa')->onDelete('cascade');
-            $table->foreign('id_spp')->references('id_spp')->on('spp')->onDelete('cascade');
         });
     }
 

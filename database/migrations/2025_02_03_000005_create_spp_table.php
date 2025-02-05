@@ -8,14 +8,11 @@ return new class extends Migration {
     public function up()
     {
         Schema::create('spp', function (Blueprint $table) {
-            $table->integer('id_spp');
+            $table->id();
             $table->string('tahun');
             $table->enum('semester', ['ganjil', 'genap']);
             $table->integer('nominal');
             $table->timestamps();
-
-
-            $table->primary('id_spp');
         });
     }
 

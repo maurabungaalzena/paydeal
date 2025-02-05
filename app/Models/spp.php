@@ -15,7 +15,7 @@ class Spp extends Model
     protected $guarded = [];
 
     public function Siswa(): BelongsTo{
-        return $this->belongsTo(Siswa::class, 'id_kelas');
+        return $this->belongsTo(siswa::class, 'id_kelas');
     }
 
     public function Pembayaran(): HasMany{
