@@ -40,7 +40,18 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'siswa' => [
+            'driver' => 'session',
+            'provider' => 'siswas',
+        ],
+
+        'petugas' => [
+            'driver' => 'session',
+            'provider' => 'petugas',
+        ],
     ],
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -62,14 +73,21 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
+            'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'siswas' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\siswa::class,
+        ],
+
+        'petugas' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\petugas::class,
+        ],
     ],
+
+
 
     /*
     |--------------------------------------------------------------------------
