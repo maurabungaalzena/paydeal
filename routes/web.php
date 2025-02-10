@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginSiswaController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/home', [PayDeal::class, 'home']);;
+Route::get('/login', action: [LoginSiswaController::class, 'login']);;

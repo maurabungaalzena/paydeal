@@ -11,10 +11,9 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginSiswaController extends Controller
 {
-    // FUNGSI KE HALAMAN LOGIN
-    public function loginSiswa() {
-        return view('siswa.login'); // ini name viewnya
-    }
+    public function login() {
+        return view('login'); // Sesuai dengan lokasi file views
+    }    
 
     // FUNGSI LOGIN
 
@@ -46,7 +45,6 @@ class LoginSiswaController extends Controller
         ]);
     }
 
-    // FUNGSI KE REGISTER NYA
 
     public function signupSiswa(Request $request) {
         $request->validate([
