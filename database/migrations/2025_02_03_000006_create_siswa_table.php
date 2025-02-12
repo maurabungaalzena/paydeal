@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->text('alamat');
             $table->string('no_telp', 13);
             $table->foreignId('id_spp')->constrained('spp')->onDelete('cascade');
+            $table->string('password');
             $table->timestamps();
         });
     }

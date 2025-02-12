@@ -9,11 +9,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class LoginSiswaController extends Controller
+class SiswaController extends Controller
 {
-    public function login() {
-        return view('login'); // Sesuai dengan lokasi file views
-    }    
+    public function loginSiswa() {
+        return view('login_siswa'); // Sesuai dengan lokasi file views
+    }
 
     // FUNGSI LOGIN
 
@@ -26,13 +26,12 @@ class LoginSiswaController extends Controller
         if (Auth::guard('siswa')->attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('dashboard');
+            return redirect()->intended('dashboard_siswa');
         }
 
         return back()->withErrors([
-            'nisn' => 'The provided credentials do not match our records.',
+            'nisn' => 'NISN atau password salah.',
         ])->onlyInput('nisn');
-
     }
 
     // FUNGSI KE HALAMAN REGISTER

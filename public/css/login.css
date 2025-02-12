@@ -34,7 +34,7 @@ form {
 }
 
 label {
-    display: none; 
+    display: none;
 }
 
 input {
@@ -106,3 +106,39 @@ button:hover {
     color: #fff;
     font-size: 18px;
 }
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    outline: none;
+    text-align: center;
+    appearance: none;
+    cursor: pointer;
+}
+
+/* Tambahkan ikon dropdown */
+select::after {
+    content: "▼";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgb(107, 102, 102);
+    pointer-events: none;
+}
+
+/* Warna teks placeholder (opsi pertama) */
+select:invalid {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Hover dan focus effect */
+select:hover, select:focus {
+    background: rgba(255, 255, 255, 0.3);
+}
+

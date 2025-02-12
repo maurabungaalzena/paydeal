@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Siswa</title>
+    <title>Login</title>
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 </head>
 <body>
@@ -19,11 +19,17 @@
             </div>
         @endif
 
-        <form action="{{ url('/login-siswa') }}" method="POST">
+        <form action="{{ route('signin') }}" method="POST">
             @csrf
-            <input type="text" name="nisn" placeholder="NISN" required>
+            <input type="text" name="usn" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
-            
+
+            <select required class="form-select input form-control" name="role" id="role">
+                <option value="" disabled selected>Pilih Peran</option>
+                <option value="siswa">Siswa</option>
+                <option value="petugas">Petugas</option>
+            </select>
+
             <div class="options">
                 <label>
                     <input type="checkbox"> Remember Me
