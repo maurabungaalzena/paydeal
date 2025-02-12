@@ -1,37 +1,40 @@
 <?php
 
+use App\Http\Controllers\SiswaController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PembayaranController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
-// 🔹 Set halaman default ("/") langsung ke halaman register
-Route::get('/', [RegisterController::class, 'showRegisterForm'])->name('register.form');
+Route::get('/', function () {
+    return view('login_siswa');
+});
 
-// 🔹 Rute untuk registrasi
-Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register.form');
-Route::post('/register', [RegisterController::class, 'register'])->name('register');
+Route::get('/dashboardsiswa', function () {
+    return view('dashboard_siswa');
+});
 
-// 🔹 Rute untuk login/logout
-Route::get('/login', [OperatorController::class, 'loginOperator'])->name('login');
-Route::post('/signin', [OperatorController::class, 'signinOperator'])->name('operator.signin');
-Route::post('/logout', [OperatorController::class, 'logoutOperator'])->name('operator.logout');
+Route::get('/dashboardpetugas', function (){
+    return view('dashboard_petugas');
+});
 
-// 🔹 Middleware untuk user yang sudah login
-Route::middleware(['auth:petugas'])->group(function () {
-    // 🔹 Dashboard Admin
-    Route::get('/dashboard/admin', function () {
-        return view('dashboard_admin');
-    })->name('dashboard_admin');
 
-    // 🔹 Dashboard Petugas
-    Route::get('/dashboard/petugas', function () {
-        return view('dashboard_petugas');
-    })->name('dashboard_petugas');
+// Route Siswa
+Route::group(['prefix' => 'siswa', 'as' => 'siswa.'], function () {
+    Route::get('/signin-siswa', [SiswaController::class, 'loginSiswa'])->name('login');
+    Route::post('/signin-siswa', [SiswaController::class, 'signinSiswa'])->name('signin');
+});
 
-    // 🔹 Rute untuk entri transaksi pembayaran
-    Route::get('/petugas/entri-transaksi', [PembayaranController::class, 'entriTransaksi'])->name('entri_transaksi');
+// Route Auth
+Route::post('/signin', [AuthController::class, 'signIn'])->name('signin');
 
-    // 🔹 Rute untuk melihat history pembayaran
-    Route::get('/petugas/history-pembayaran', [PembayaranController::class, 'historyPembayaran'])->name('history_pembayaran');
+// Route Admin
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::get('/signin-admin', [OperatorController::class, 'signinAdmin'])->name('signin');
+    Route::post('/login-admin', [OperatorController::class, 'loginAdmin'])->name('login');
+
+    // Register Admin
+    Route::get('/register-admin', [RegisterController::class, 'registerAdmin'])->name('register');
+    Route::post('/signup-admin', [RegisterController::class, 'signupAdmin'])->name('signup');
 });

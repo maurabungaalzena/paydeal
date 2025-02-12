@@ -24,10 +24,7 @@ class OperatorController extends Controller
 
         // Cek apakah user bisa login dengan guard petugas
         if (Auth::guard('petugas')->attempt($credentials)) {
-            // Regenerasi session
             $request->session()->regenerate();
-
-            // Mendapatkan user yang sedang login
             $user = Auth::guard('petugas')->user();
 
             // Redirect berdasarkan role
@@ -36,7 +33,6 @@ class OperatorController extends Controller
                 : redirect()->route('dashboard_petugas');
         }
 
-        // Jika login gagal
         return back()->withErrors([
             'username' => 'Username atau password salah.',
         ])->onlyInput('username');

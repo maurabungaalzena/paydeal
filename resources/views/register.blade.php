@@ -57,7 +57,7 @@
             <button type="submit" class="btn btn-primary w-100">Register</button>
 
             <div class="text-center mt-3">
-                <small>Sudah punya akun? <a href="{{ route('login') }}">Login</a></small>
+                <small>Sudah punya akun? <a href="{{ route('login.operator') }}">Login</a></small>
             </div>
         </form>
     </div>

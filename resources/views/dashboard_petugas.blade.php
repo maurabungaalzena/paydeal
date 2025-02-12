@@ -12,15 +12,15 @@
 
         <div class="row">
             <div class="col-md-6">
-                <a href="{{ route('entri_transaksi') }}" class="btn btn-primary btn-lg w-100">
+                {{-- <a href="{{ route('entri_transaksi') }}" class="btn btn-primary btn-lg w-100">
                     Entri Transaksi Pembayaran
-                </a>
+                </a> --}}
             </div>
-            <div class="col-md-6">
+            {{-- <div class="col-md-6">
                 <a href="{{ route('history_pembayaran') }}" class="btn btn-secondary btn-lg w-100">
                     Lihat History Pembayaran
                 </a>
-            </div>
+            </div> --}}
         </div>
     </div>
 

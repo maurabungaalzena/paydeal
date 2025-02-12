@@ -14,11 +14,12 @@ class SiswaFactory extends Factory
         return [
             'nisn' => $this->faker->unique()->numerify('##########'),
             'nis' => $this->faker->unique()->numerify('########'),
+            'password' => bcrypt('12345678'),
             'nama' => $this->faker->name(),
             'id_kelas' => \App\Models\Kelas::inRandomOrder()->first(),
             'alamat' => $this->faker->address(),
-            'no_telp' => $this->faker->numerify('###########'), 
-            'id_spp' => \App\Models\Spp::inRandomOrder()->first(), 
+            'no_telp' => $this->faker->numerify('###########'),
+            'id_spp' => \App\Models\Spp::inRandomOrder()->first(),
         ];
     }
 }
