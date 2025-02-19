@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\petugas; 
+use App\Models\petugas;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,8 +12,9 @@ class RegisterController extends Controller
 {
     public function showRegisterForm()
     {
-        return view('register');
+        return view('register'); 
     }
+
 
     public function register(Request $request)
     {

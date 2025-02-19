@@ -11,8 +11,9 @@ use Illuminate\Support\Facades\Hash;
 
 class SiswaController extends Controller
 {
-    public function loginSiswa() {
-        return view('login_siswa'); // Sesuai dengan lokasi file views
+        public function loginSiswa()
+    {
+        return view('siswa.page.login.login'); // Sesuaikan dengan path file login.blade.php
     }
 
     // FUNGSI LOGIN
