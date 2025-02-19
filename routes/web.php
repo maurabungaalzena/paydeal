@@ -8,8 +8,17 @@ use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
-    return view('login_siswa');
+    return view('siswa.page.dashboard.IndexPage');
 });
+
+Route::get('/siswa/signin-siswa', [SiswaController::class, 'loginSiswa'])->name('siswa.login');
+
+Route::get('/register-admin', [RegisterController::class, 'register'])->name('register');
+
+Route::get('/contact', function () {
+    return view('siswa.page.dashboard.contact');
+})->name('contact');
+
 
 Route::get('/dashboardsiswa', function () {
     return view('dashboard_siswa');
