@@ -4,61 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Pembayaran</title>
-    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-        <h2 class="text-2xl font-semibold mb-4 text-center">Form Pembayaran</h2>
+<body>
+    <h2>Form Pembayaran</h2>
 
-        @if(session('success'))
-            <p class="text-green-600 text-center">{{ session('success') }}</p>
-        @endif
+    @if(session('success'))
+        <p style="color: green;">{{ session('success') }}</p>
+    @endif
 
-        <form action="{{ route('pembayaran.proses') }}" method="post" class="space-y-4">
-            @csrf
+    <form action="{{ route('pembayaran.proses') }}" method="POST">
+        @csrf
 
-            <div>
-                <label for="id_petugas" class="block font-medium">ID Petugas</label>
-                <input type="number" id="id_petugas" name="id_petugas" required class="w-full p-2 border rounded-lg">
-            </div>
+        <!-- Pilih Petugas -->
+        <label for="id_petugas">Petugas:</label>
+        <select name="id_petugas" id="id_petugas" required>
+            @foreach($petugas as $p)
+                <option value="{{ $p->id }}">{{ $p->nama_petugas }}</option>
+            @endforeach
+        </select>
+        <br>
 
-            <div>
-                <label for="nisn" class="block font-medium">NISN</label>
-                <input type="text" id="nisn" name="nisn" required class="w-full p-2 border rounded-lg">
-            </div>
+        <!-- Pilih Siswa -->
+        <label for="nisn">Siswa:</label>
+        <select name="nisn" id="nisn" required>
+            @foreach($siswa as $s)
+                <option value="{{ $s->nisn }}">{{ $s->nisn }} - {{ $s->nama }}</option>
+            @endforeach
+        </select>
+        <br>
 
-            <div>
-                <label for="tanggal_bayar" class="block font-medium">Tanggal Bayar</label>
-                <input type="date" id="tanggal_bayar" name="tanggal_bayar" required class="w-full p-2 border rounded-lg">
-            </div>
+        <!-- Pilih SPP -->
+        <label for="id_spp">SPP:</label>
+        <select name="id_spp" id="id_spp" required>
+            @foreach($spp as $s)
+                <option value="{{ $s->id }}">{{ $s->tahun }} - Rp{{ number_format($s->nominal) }}</option>
+            @endforeach
+        </select>
+        <br>
 
-            <div>
-                <label for="bulan_dibayar" class="block font-medium">Bulan Bayar</label>
-                <select id="bulan_dibayar" name="bulan_dibayar" required class="w-full p-2 border rounded-lg">
-                    <option value="">Pilih Bulan</option>
-                    @foreach (['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'] as $bulan)
-                        <option value="{{ $bulan }}">{{ $bulan }}</option>
-                    @endforeach
-                </select>
-            </div>
+        <!-- Input Data Lain -->
+        <label for="tgl_bayar">Tanggal Bayar:</label>
+        <input type="date" name="tgl_bayar" required>
+        <br>
 
-            <div>
-                <label for="tahun_dibayar" class="block font-medium">Tahun Bayar</label>
-                <input type="number" id="tahun_dibayar" name="tahun_dibayar" required class="w-full p-2 border rounded-lg">
-            </div>
+        <label for="bulan_dibayar">Bulan Dibayar:</label>
+        <input type="text" name="bulan_dibayar" required>
+        <br>
 
-            <div>
-                <label for="id_spp" class="block font-medium">ID SPP</label>
-                <input type="number" id="id_spp" name="id_spp" required class="w-full p-2 border rounded-lg">
-            </div>
+        <label for="tahun_dibayar">Tahun Dibayar:</label>
+        <input type="number" name="tahun_dibayar" required>
+        <br>
 
-            <div>
-                <label for="jumlah_bayar" class="block font-medium">Jumlah Bayar</label>
-                <input type="number" id="jumlah_bayar" name="jumlah_bayar" required class="w-full p-2 border rounded-lg">
-            </div>
+        
+        <label for="jumlah_bayar">Jumlah Bayar:</label>
+        <input type="number" name="jumlah_bayar" required>
+        <br>
 
-            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600">Selesai</button>
-        </form>
-    </div>
+        <button type="submit">Bayar</button>
+    </form>
 </body>
 </html>

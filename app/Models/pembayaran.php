@@ -4,32 +4,36 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Pembayaran extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
-    /**
-     * Relasi dengan model Petugas
-     */
-    public function petugas()
+   
+    protected $fillable = [
+        'id_petugas',
+        'nisn',
+        'id_spp',
+        'tanggal_bayar',
+        'bulan_dibayar',
+        'tahun_dibayar',
+        'jumlah_bayar',
+    ];
+
+
+
+    public function siswa(): BelongsTo
+    {
+        return $this->belongsTo(Siswa::class, 'nisn', 'nisn');
+    }
+
+    public function petugas(): BelongsTo
     {
         return $this->belongsTo(Petugas::class, 'id_petugas');
     }
 
-    /**
-     * Relasi dengan model Siswa
-     */
-    public function siswa()
-    {
-        return $this->belongsTo(Siswa::class, 'id_siswa');
-    }
-
-    /**
-     * Relasi dengan model SPP
-     */
-    public function spp()
+    public function spp(): BelongsTo
     {
         return $this->belongsTo(Spp::class, 'id_spp');
     }
