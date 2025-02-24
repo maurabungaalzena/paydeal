@@ -14,16 +14,16 @@ class Petugas extends Authenticatable
 
     protected $table = 'petugas'; 
     protected $fillable = ['username', 'password', 'nama_petugas', 'role'];
-    protected $hidden = ['password'];
+    //protected $hidden = ['password'];
 
     // Hash password saat menyimpan data baru
-    protected static function boot()
-    {
-        parent::boot();
-        static::creating(function ($petugas) {
-            $petugas->password = Hash::make($petugas->password);
-        });
-    }
+    // protected static function boot()
+    // {
+    //     parent::boot();
+    //     static::creating(function ($petugas) {
+    //         $petugas->password = Hash::make($petugas->password);
+    //     });
+    // }
 
     public function pembayaran(): HasMany
     {
