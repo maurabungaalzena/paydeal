@@ -7,8 +7,10 @@ use App\Http\Controllers\landing;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SppController;
+use App\Http\Controllers\EntriPembayaranController;
+use App\Http\Controllers\KelasController;
 
 Route::get('/', function () {
     return view('siswa.page.dashboard.IndexPage');
@@ -58,5 +60,49 @@ Route::get('/tambah/petugas', [PetugasController::class, 'showForm'])->name('pet
 Route::post('/tambah/petugas', [PetugasController::class, 'tambahPetugas'])->name('tambah.petugas');
 Route::get('/petugas/{id}/edit', [PetugasController::class, 'edit'])->name('edit.petugas');
 Route::post('/petugas/{id}/edit', [PetugasController::class, 'update'])->name('update.petugas');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/pembayaran', [PembayaranController::class, 'showForm'])->name('pembayaran.form');
+    Route::post('/pembayaran', [PembayaranController::class, 'prosesPembayaran'])->name('pembayaran.proses');
+});
+
+Route::get('/tambah/data/siswa', [SiswaController::class, 'create'])->name('siswa.create');
+Route::post('/siswa', [SiswaController::class, 'store'])->name('siswa.store');
+Route::get('/siswa/edit/{id}', [SiswaController::class, 'edit'])->name('siswa.edit');
+Route::put('/siswa/update/{id}', [SiswaController::class, 'update'])->name('siswa.update');
+Route::delete('/siswa/destroy/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
+// Route untuk menampilkan detail siswa
+Route::post('/siswa/{id}', [SiswaController::class, 'show'])->name('siswa.show');
+
+// Route untuk menampilkan form tambah data SPP
+Route::get('/tambah/data/spp', [SppController::class, 'create'])->name('tambah.spp');
+
+// Route untuk menyimpan data SPP ke database
+Route::post('/spp/store', [SppController::class, 'store'])->name('spp.store');
+Route::get('/spp', [SppController::class, 'index'])->name('spp.index');
+Route::get('/spp/create', [SppController::class, 'create'])->name('spp.create');
+Route::post('/spp', [SppController::class, 'store'])->name('spp.store');
+Route::get('/spp/{id}/edit', [SppController::class, 'edit'])->name('spp.edit');
+Route::put('/spp/{id}', [SppController::class, 'update'])->name('spp.update');
+Route::delete('/spp/{id}', [SppController::class, 'destroy'])->name('spp.destroy');
+
+
+Route::get('/entri/pembayaran/create', [EntriPembayaranController::class, 'create'])->name('entri.pembayaran.create');
+Route::post('/entri/pembayaran/store', [EntriPembayaranController::class, 'store'])->name('entri.pembayaran.store');
+
+Route::get('/tambah/siswa', [SiswaController::class, 'showForm'])->name('siswa.form');
+Route::post('/tambah/siswa', [SiswaController::class, 'tambahSiswa'])->name('tambah.siswa');
+Route::get('/siswa/{id}', [SiswaController::class, 'show'])->name('siswa.show');
+Route::get('/edit/siswa/{id}', [SiswaController::class, 'edit'])->name('edit.siswa');
+Route::post('/siswa/update/{id}', [SiswaController::class, 'update'])->name('update.siswa');
+Route::delete('/siswa/{id}', [SiswaController::class, 'destroy'])->name('hapus.siswa');
+
+Route::post('/spp/{id}/update', [SppController::class, 'update'])->name('spp.update');
+
+Route::resource('kelas', KelasController::class);
+Route::get('/kelas/create', [KelasController::class, 'create'])->name('kelas.create');
+Route::get('/kelas/{id}/edit', [KelasController::class, 'edit'])->name('kelas.edit');
+Route::put('/kelas/{id}', [KelasController::class, 'update'])->name('kelas.update');
+Route::delete('/kelas/{id}', [KelasController::class, 'destroy'])->name('kelas.destroy');
 
 
