@@ -7,8 +7,9 @@ use App\Http\Controllers\landing;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\AuthController;
+Route::post('/register-admin', [RegisterController::class, 'register'])->name('register.post');
+
 
 Route::get('/', function () {
     return view('siswa.page.dashboard.IndexPage');
@@ -22,14 +23,17 @@ Route::get('/contact', function () {
     return view('siswa.page.dashboard.contact');
 })->name('contact');
 
+Route::get('register',function(){
+    return view('register');
+});
 
 Route::get('/dashboardsiswa', function () {
-    return view('dashboard_siswa');
-});
+    return view('siswa.page.dashboard.dashboard_siswa');
+})->name('dashboard_siswa');
 
-Route::get('/dashboardpetugas', function (){
+Route::get('/dashboardpetugas', function () {
     return view('dashboard_petugas');
-});
+})->name(name: 'dashboard_petugas');
 
 
 // Route Siswa
@@ -50,6 +54,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/register-admin', [RegisterController::class, 'registerAdmin'])->name('register');
     Route::post('/signup-admin', [RegisterController::class, 'signupAdmin'])->name('signup');
 });
+
+Route::post('/logout', [AuthController::class, 'logoutAdmin'])->name('logout');
+
 
 Route::get('/landing', [landing::class, 'show']);
 Route::get('/pembayaran/form', [PembayaranController::class, 'showForm'])->name('pembayaran.form');
