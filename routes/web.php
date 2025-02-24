@@ -7,7 +7,6 @@ use App\Http\Controllers\landing;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
@@ -18,10 +17,13 @@ Route::get('/siswa/signin-siswa', [SiswaController::class, 'loginSiswa'])->name(
 
 Route::get('/register-admin', [RegisterController::class, 'register'])->name('register');
 
-Route::get('/contact', function () {
-    return view('siswa.page.dashboard.contact');
-})->name('contact');
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
 
+Route::get('/IndexPage', function () {
+    return view('siswa.page.dashboard.IndexPage');
+})->name('siswa.page.dashboard.IndexPage');
 
 Route::get('/dashboardsiswa', function () {
     return view('dashboard_siswa');

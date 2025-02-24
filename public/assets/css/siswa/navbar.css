@@ -1,6 +1,20 @@
+/* NAVBAR.CSS */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    /* Hapus font-family di sini jika sudah didefinisikan di LPage.css
+       atau biarkan jika memang ingin fallback font "Arial" di sini.
+    */
+}
+
+/* Pastikan .navbar tidak override background LPage.css */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #08396d; /* Warna navbar */
+    border-radius: 10px;
+    margin: 10px;
 }
 
 .logo img {
@@ -8,25 +22,11 @@ body {
     width: 100px;
 }
 
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: #08396d;
-    border-radius: 10px;
-    margin: 10px; 
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-}
-
 .nav-links {
     display: flex;
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links li {
@@ -36,10 +36,12 @@ body {
 .nav-links a {
     text-decoration: none;
     color: white;
+    font-weight: 500;
 }
 
 .auth-buttons {
     display: flex;
+    align-items: center;
 }
 
 .sign-in {
@@ -61,7 +63,12 @@ body {
     cursor: pointer;
 }
 
-/* Responsive Design - Small Screens */
+/* Untuk menu hamburger, jika diperlukan */
+.menu-icon {
+    display: none; /* Akan muncul di layar kecil */
+}
+
+/* Responsive - Small Screens */
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
@@ -72,7 +79,6 @@ body {
         display: none;
         width: 100%;
         flex-direction: column;
-        align-items: flex-start;
         margin-top: 10px;
     }
 
@@ -100,12 +106,5 @@ body {
         height: 3px;
         background-color: white;
         margin: 5px 0;
-    }
-}
-
-/* For the hamburger menu (toggle) */
-@media (max-width: 768px) {
-    .navbar .menu-icon {
-        display: block;
     }
 }
