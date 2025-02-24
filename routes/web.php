@@ -66,11 +66,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/pembayaran', [PembayaranController::class, 'prosesPembayaran'])->name('pembayaran.proses');
 });
 
-Route::get('/tambah/data/siswa', [SiswaController::class, 'create'])->name('siswa.create');
-Route::post('/siswa', [SiswaController::class, 'store'])->name('siswa.store');
+Route::get('/siswa/form', [SiswaController::class, 'showForm'])->name('siswa.form');
+Route::post('/siswa/store', [SiswaController::class, 'tambahSiswa'])->name('siswa.store');
 Route::get('/siswa/edit/{id}', [SiswaController::class, 'edit'])->name('siswa.edit');
 Route::put('/siswa/update/{id}', [SiswaController::class, 'update'])->name('siswa.update');
-Route::delete('/siswa/destroy/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
+Route::delete('/siswa/delete/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
+Route::get('/tambah-siswa', [SiswaController::class, 'showForm'])->name('siswa.form');
 // Route untuk menampilkan detail siswa
 Route::post('/siswa/{id}', [SiswaController::class, 'show'])->name('siswa.show');
 

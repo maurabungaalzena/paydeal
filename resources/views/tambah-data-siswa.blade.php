@@ -18,37 +18,57 @@
             <!-- Form Tambah Siswa -->
             <div class="bg-gray-50 p-4 rounded-lg shadow">
                 <h3 class="text-xl font-semibold mb-3">Tambah Siswa</h3>
-                <form action="{{ route('siswa.tambah') }}" method="POST">
+                <form action="{{ route('tambah.siswa') }}" method="POST">
                     @csrf
 
                     <div class="mb-3">
-                        <label for="nisn" class="block font-medium">NISN</label>
-                        <input type="text" id="nisn" name="nisn" required class="w-full p-2 border rounded-lg">
+                        <label class="block font-medium">NISN</label>
+                        <input type="text" name="nisn" required class="w-full p-2 border rounded-lg">
                     </div>
 
                     <div class="mb-3">
-                        <label for="password" class="block font-medium">Password</label>
-                        <input type="password" id="password" name="password" required class="w-full p-2 border rounded-lg">
+                        <label class="block font-medium">Password</label>
+                        <input type="password" name="password" required class="w-full p-2 border rounded-lg">
                     </div>
 
                     <div class="mb-3">
-                        <label for="nis" class="block font-medium">NIS</label>
-                        <input type="text" id="nis" name="nis" required class="w-full p-2 border rounded-lg">
+                        <label class="block font-medium">NIS</label>
+                        <input type="text" name="nis" required class="w-full p-2 border rounded-lg">
                     </div>
 
                     <div class="mb-3">
-                        <label for="nama" class="block font-medium">Nama Siswa</label>
-                        <input type="text" id="nama" name="nama" required class="w-full p-2 border rounded-lg">
+                        <label class="block font-medium">Nama Siswa</label>
+                        <input type="text" name="nama" required class="w-full p-2 border rounded-lg">
                     </div>
 
                     <div class="mb-3">
-                        <label for="alamat" class="block font-medium">Alamat</label>
-                        <input type="text" id="alamat" name="alamat" required class="w-full p-2 border rounded-lg">
+                        <label class="block font-medium">Alamat</label>
+                        <input type="text" name="alamat" required class="w-full p-2 border rounded-lg">
                     </div>
 
                     <div class="mb-3">
-                        <label for="no_telp" class="block font-medium">No Telp</label>
-                        <input type="text" id="no_telp" name="no_telp" required class="w-full p-2 border rounded-lg">
+                        <label class="block font-medium">No Telp</label>
+                        <input type="text" name="no_telp" required class="w-full p-2 border rounded-lg">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="block font-medium">Kelas</label>
+                        <select name="id_kelas" required class="w-full p-2 border rounded-lg">
+                            <option value="">-- Pilih Kelas --</option>
+                            @foreach($kelas as $k)
+                                <option value="{{ $k->id }}">{{ $k->nama_kelas }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="block font-medium">SPP</label>
+                        <select name="id_spp" required class="w-full p-2 border rounded-lg">
+                            <option value="">-- Pilih SPP --</option>
+                            @foreach($spp as $s)
+                                <option value="{{ $s->id }}">{{ $s->tahun }} - Rp{{ number_format($s->nominal, 0, ',', '.') }}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <button type="submit" class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600">

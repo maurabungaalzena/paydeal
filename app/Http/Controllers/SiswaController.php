@@ -7,22 +7,18 @@ use App\Models\Kelas;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
-use Illuminate\Http\Request;
-use App\Models\Siswa;
-
 use Illuminate\Support\Facades\Hash;
 
 class SiswaController extends Controller
 {
-        public function loginSiswa()
+    public function loginSiswa()
     {
-        return view('siswa.page.login.login'); // Sesuaikan dengan path file login.blade.php
+        return view('siswa.page.login.login');
     }
 
     // FUNGSI LOGIN
-
-    public function signinSiswa(Request $request) {
+    public function signinSiswa(Request $request)
+    {
         $credentials = $request->validate([
             'nisn' => ['required'],
             'password' => ['required'],
@@ -30,7 +26,6 @@ class SiswaController extends Controller
 
         if (Auth::guard('siswa')->attempt($credentials)) {
             $request->session()->regenerate();
-
             return redirect()->intended('dashboard_siswa');
         }
 
@@ -40,49 +35,51 @@ class SiswaController extends Controller
     }
 
     // FUNGSI KE HALAMAN REGISTER
-    public function registerSiswa() {
+    public function registerSiswa()
+    {
         $kelas = Kelas::all();
         $spp = Spp::all();
-        return view('siswa.register',[
-            'kelas' => $kelas,
-            'spp' => $spp
-        ]);
+        return view('siswa.register', compact('kelas', 'spp'));
     }
 
-
-    public function signupSiswa(Request $request) {
+    public function signupSiswa(Request $request)
+    {
         $request->validate([
-            'nisn' => ['required'],
-            'nis' => ['required'],
+            'nisn' => ['required', 'unique:siswa,nisn'],
+            'nis' => ['required', 'unique:siswa,nis'],
             'nama' => ['required'],
-            'id_kelas' => ['required'],
+            'id_kelas' => ['required', 'exists:kelas,id'],
             'alamat' => ['required'],
-            'no_telp' => ['required'],
-            'id_spp' => ['required'],
+            'no_telp' => ['required', 'numeric'],
+            'id_spp' => ['required', 'exists:spp,id'],
             'password' => ['required', 'min:8'],
         ]);
 
-        $siswa = new Siswa();
-        $siswa->nisn = $request->nisn;
-        $siswa->nis = $request->nis;
-        $siswa->nama = $request->nama;
-        $siswa->id_kelas = $request->id_kelas;
-        $siswa->alamat = $request->alamat;
-        $siswa->no_telp = $request->no_telp;
-        $siswa->id_spp = $request->id_spp;
-        $siswa->password = Hash::make($request->password);
-        $siswa->save();
+        Siswa::create([
+            'nisn' => $request->nisn,
+            'nis' => $request->nis,
+            'nama' => $request->nama,
+            'id_kelas' => $request->id_kelas,
+            'alamat' => $request->alamat,
+            'no_telp' => $request->no_telp,
+            'id_spp' => $request->id_spp,
+            'password' => Hash::make($request->password),
+        ]);
 
         return back()->with('success', 'Berhasil Membuat Data Siswa Baru');
     }
 
-
-    // Menampilkan form tambah siswa
+    // Menampilkan form tambah siswa + daftar siswa
     public function showForm()
-    {
-        $siswa = Siswa::all();
-        return view('tambah-data-siswa', compact('siswa'));
-    }
+{
+    $kelas = Kelas::all();
+    $spp = Spp::all();
+    $siswa = Siswa::all(); // Pastikan ini ada
+
+    return view('tambah-data-siswa', compact('kelas', 'spp', 'siswa'));
+}
+
+    
 
     public function show($id)
     {
@@ -90,22 +87,11 @@ class SiswaController extends Controller
         return view('detail-siswa', compact('siswa'));
     }
 
-
     // Proses tambah siswa
     public function tambahSiswa(Request $request)
-    {
-        $request->validate([
-            'nisn' => 'required|unique:siswa,nisn',
-            'password' => 'required|min:6',
-            'nis' => 'required|unique:siswa,nis',
-            'nama' => 'required|string|max:255',
-            'alamat' => 'required|string',
-            'no_telp' => 'required|numeric',
-            'id_kelas' => 'required|exists:kelas,id',
-            'id_spp' => 'required|exists:spp,id',
-        ]);
-
-        Siswa::create([
+{
+    try {
+        $siswa = Siswa::create([
             'nisn' => $request->nisn,
             'password' => Hash::make($request->password),
             'nis' => $request->nis,
@@ -116,14 +102,23 @@ class SiswaController extends Controller
             'id_spp' => $request->id_spp,
         ]);
 
-        return redirect()->route('siswa.form')->with('success', 'Siswa berhasil ditambahkan.');
+        if ($siswa) {
+            return redirect()->route('siswa.form')->with('success', 'Siswa berhasil ditambahkan.');
+        } else {
+            return back()->with('error', 'Gagal menambahkan siswa.');
+        }
+    } catch (\Exception $e) {
+        return back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
     }
+}
 
     // Menampilkan form edit siswa
     public function edit($id)
     {
         $siswa = Siswa::findOrFail($id);
-        return view('edit-siswa', compact('siswa'));
+        $kelas = Kelas::all();
+        $spp = Spp::all();
+        return view('edit-siswa', compact('siswa', 'kelas', 'spp'));
     }
 
     // Proses update data siswa
@@ -164,5 +159,4 @@ class SiswaController extends Controller
 
         return redirect()->back()->with('success', 'Siswa berhasil dihapus.');
     }
-
 }
