@@ -28,7 +28,16 @@
     <link href="{{ asset ('assets/css/siswa/navbar.css') }}" rel="stylesheet">
     <link href="{{ asset ('assets/css/siswa/contactus.css') }}" rel="stylesheet">
 
-    @include('siswa.components.navbar')
-    @yield('containerdashboard')
+    @include('siswa.components.navbar')  {{-- Pastikan navbar ada di sini --}}
+
+    {{-- Tempat untuk konten halaman --}}
+    <main>
+        @yield('containerdashboard')
+    </main>
+
+    <!-- Footer global jika ada -->
+    <footer style="text-align: center; padding: 20px; color: #fff;">
+      &copy; {{ date('Y') }} PayDeal. All rights reserved.
+    </footer>
 </body>
 </html>

@@ -22,9 +22,13 @@ Route::get('/siswa/signin-siswa', [SiswaController::class, 'loginSiswa'])->name(
 
 Route::get('/register-admin', [RegisterController::class, 'register'])->name('register');
 
-Route::get('/contact', function () {
-    return view('siswa.page.dashboard.contact');
-})->name('contact');
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
+Route::get('/IndexPage', function () {
+    return view('siswa.page.dashboard.IndexPage');
+})->name('siswa.page.dashboard.IndexPage');
 
 Route::get('register',function(){
     return view('register');

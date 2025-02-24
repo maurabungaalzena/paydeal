@@ -40,7 +40,7 @@
         </form>
 
 
-        <p class="options">Don't have an account? <a href="#">Sign Up</a></p>
+        <p class="options">Don't have an account?</p>
     </div>
 </body>
 </html>
