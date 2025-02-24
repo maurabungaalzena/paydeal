@@ -73,10 +73,10 @@ Route::post('/tambah/petugas', [PetugasController::class, 'tambahPetugas'])->nam
 Route::get('/petugas/{id}/edit', [PetugasController::class, 'edit'])->name('edit.petugas');
 Route::post('/petugas/{id}/edit', [PetugasController::class, 'update'])->name('update.petugas');
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/pembayaran', [PembayaranController::class, 'showForm'])->name('pembayaran.form');
-    Route::post('/pembayaran', [PembayaranController::class, 'prosesPembayaran'])->name('pembayaran.proses');
-});
+
+Route::get('/pembayaran', [PembayaranController::class, 'showForm'])->name('pembayaran.form');
+Route::post('/pembayaran', [PembayaranController::class, 'prosesPembayaran'])->name('pembayaran.proses');
+
 
 Route::get('/siswa/form', [SiswaController::class, 'showForm'])->name('siswa.form');
 Route::post('/siswa/store', [SiswaController::class, 'tambahSiswa'])->name('siswa.store');
