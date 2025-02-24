@@ -9,9 +9,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Siswa extends Authenticatable
 {
     use HasFactory;
+    use HasFactory;
 
-    protected $guarded = [];
-    protected $table = 'siswa';
+    protected $table = 'siswa'; // Pastikan ini sesuai dengan nama tabel di database
+    protected $fillable = [
+        'nisn', 'password', 'nis', 'nama', 'alamat', 'no_telp', 'id_kelas', 'id_spp'
+    ];
+    
 
     // Relasi ke Kelas
     public function kelas()
@@ -30,4 +34,6 @@ class Siswa extends Authenticatable
     {
         return $this->hasMany(Pembayaran::class, 'id_siswa');
     }
+
+   
 }
