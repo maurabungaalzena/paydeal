@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Petugas</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="{{ asset('assets/css/admin/editPetugas.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
     <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl">
@@ -42,7 +44,7 @@
                 </select>
             </div>
 
-            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600">
+            <button type="submit" class="w-full bg-[#001F3F] text-white py-2 rounded-lg hover:bg-[#003366]">
                 Simpan Perubahan
             </button>
         </form>
