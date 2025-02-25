@@ -72,7 +72,7 @@ Route::get('/tambah/petugas', [PetugasController::class, 'showForm'])->name('pet
 Route::post('/tambah/petugas', [PetugasController::class, 'tambahPetugas'])->name('tambah.petugas');
 Route::get('/petugas/{id}/edit', [PetugasController::class, 'edit'])->name('edit.petugas');
 Route::post('/petugas/{id}/edit', [PetugasController::class, 'update'])->name('update.petugas');
-
+Route::delete('/petugas/{id}', [PetugasController::class, 'destroy'])->name('hapus.petugas');
 
 Route::get('/pembayaran', [PembayaranController::class, 'showForm'])->name('pembayaran.form');
 Route::post('/pembayaran', [PembayaranController::class, 'prosesPembayaran'])->name('pembayaran.proses');
