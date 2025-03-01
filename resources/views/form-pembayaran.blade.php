@@ -55,7 +55,7 @@
         <input type="number" name="tahun_dibayar" required>
         <br>
 
-        
+
         <label for="jumlah_bayar">Jumlah Bayar:</label>
         <input type="number" name="jumlah_bayar" required>
         <br>
