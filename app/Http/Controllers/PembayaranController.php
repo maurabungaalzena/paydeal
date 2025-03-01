@@ -13,7 +13,6 @@ class PembayaranController extends Controller
     // Menampilkan form pembayaran
     public function showForm()
     {
-        // Ambil semua data petugas, siswa, dan SPP untuk dropdown
         $petugas = Petugas::all();
         $siswa = Siswa::all();
         $spp = Spp::all();
@@ -23,32 +22,48 @@ class PembayaranController extends Controller
 
     // Memproses pembayaran
     public function prosesPembayaran(Request $request)
-{
-    $request->validate([
-        'id_petugas' => 'required|exists:petugas,id',
-        'nisn' => 'required|exists:siswa,nisn',
-        'id_spp' => 'required|exists:spp,id',
-        'tgl_bayar' => 'required|date',
-        'bulan_dibayar' => 'required|string',
-        'tahun_dibayar' => 'required|integer',
-        'jumlah_bayar' => 'required|numeric|min:0',
-    ]);
+    {
+        $request->validate([
+            'id_petugas' => 'required|exists:petugas,id',
+            'nisn' => 'required|exists:siswa,nisn',
+            'id_spp' => 'required|exists:spp,id',
+            'tgl_bayar' => 'required|date',
+            'bulan_dibayar' => 'required|string',
+            'tahun_dibayar' => 'required|integer',
+            'jumlah_bayar' => 'required|numeric|min:0',
+        ]);
 
-    $pembayaran = Pembayaran::create([
-        'id_petugas' => $request->id_petugas,
-        'nisn' => $request->nisn,
-        'id_spp' => $request->id_spp,
-        'tanggal_bayar' => $request->tgl_bayar,
-        'bulan_dibayar' => $request->bulan_dibayar,
-        'tahun_dibayar' => $request->tahun_dibayar,
-        'jumlah_bayar' => str_replace('.', '', $request->jumlah_bayar),
-    ]);
+        $pembayaran = Pembayaran::create([
+            'id_petugas' => $request->id_petugas,
+            'nisn' => $request->nisn,
+            'id_spp' => $request->id_spp,
+            'tanggal_bayar' => $request->tgl_bayar,
+            'bulan_dibayar' => $request->bulan_dibayar,
+            'tahun_dibayar' => $request->tahun_dibayar,
+            'jumlah_bayar' => str_replace('.', '', $request->jumlah_bayar),
+        ]);
 
-    if (!$pembayaran) {
-        return back()->with('error', 'Gagal menyimpan data');
+        if (!$pembayaran) {
+            return back()->with('error', 'Gagal menyimpan data');
+        }
+
+        return redirect()->route('pembayaran.form')->with('success', 'Pembayaran berhasil disimpan.');
     }
 
-    return redirect()->route('pembayaran.form')->with('success', 'Pembayaran berhasil disimpan.');
-}
+    // Menampilkan dashboard siswa dengan total dan sisa pembayaran
+    public function index()
+    {
+        $pembayaran = Pembayaran::with('petugas', 'siswa', 'spp')->get();
 
-}
+        // Hitung total pembayaran
+        $totalPembayaran = $pembayaran->sum('jumlah_bayar');
+
+        // Ambil total biaya SPP
+        $totalSPP = Spp::sum('nominal');
+
+        // Hitung sisa pembayaran
+        $sisaPembayaran = max(0, $totalSPP - $totalPembayaran);
+
+        return view('siswa.page.dashboard.dashboard_siswa', compact('pembayaran', 'totalPembayaran', 'sisaPembayaran'));
+    }
+} 

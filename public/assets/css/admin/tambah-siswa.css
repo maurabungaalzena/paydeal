@@ -1,0 +1,197 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom, #ffffff, #0e2741); /* Gradasi putih ke navy */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 1000px;
+    min-height: 90vh; /* Tambahkan min-height agar form dan tabel seimbang */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+h2, h3 {
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
+
+form {
+    background: transparent;
+    padding: 20px;
+    border-radius: 8px;
+    flex-grow: 1; /* Membuat form mengisi ruang yang tersedia */
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+button, .edit-button {
+    background-color: #0e2741;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    display: inline-block;
+    text-align: center;
+}
+
+button:hover, .edit-button:hover {
+    background-color: #0c1f34;
+}
+
+button {
+    width: 100%;
+    background-color: #001F3F;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #003366;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Agar tabel tidak keluar layar */
+    flex-grow: 1; /* Tabel mengisi ruang yang tersedia */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    overflow: hidden;
+    table-layout: fixed; /* Membatasi lebar tabel agar tidak keluar */
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    white-space: nowrap; /* Agar teks tidak turun ke bawah */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Tambahkan elipsis jika teks terlalu panjang */
+}
+
+table th {
+    background: #001F3F;
+    color: white;
+}
+
+table tbody tr:hover {
+    background: rgba(0, 31, 63, 0.1);
+}
+
+/* Pastikan tombol tetap dalam batas */
+.btn-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Agar tombol tidak keluar */
+    gap: 5px;
+}
+
+.btn-action {
+    display: inline-block;
+    text-align: center;
+    width: auto; /* Sesuaikan lebar tombol */
+    min-width: 70px; /* Batasi ukuran minimum */
+    padding: 6px 10px;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+/* Perbaiki tombol edit agar tidak keluar */
+.btn-edit {
+    background-color: #001F3F;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: 0.3s;
+    white-space: nowrap; /* Pastikan tombol tidak melar */
+}
+
+.btn-edit:hover {
+    background-color: #003366;
+}
+
+.btn-delete {
+    background-color: #DC3545;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn-delete:hover {
+    background-color: #A71D2A;
+}
+
+/* Warna tombol back diubah menjadi kuning */
+.back-button {
+    background-color: #fde36d;
+    color: black;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-block;
+    margin-bottom: 15px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.back-button:hover {
+    background-color: #fcd535;
+}
+
+/* Responsive untuk layar kecil */
+@media (max-width: 768px) {
+    table th, table td {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .btn-container {
+        gap: 3px; /* Kurangi jarak antar tombol di layar kecil */
+    }
+
+    .btn-action {
+        font-size: 12px;
+        padding: 5px 8px;
+    }
+}

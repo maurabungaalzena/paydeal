@@ -72,7 +72,7 @@ Route::get('/tambah/petugas', [PetugasController::class, 'showForm'])->name('pet
 Route::post('/tambah/petugas', [PetugasController::class, 'tambahPetugas'])->name('tambah.petugas');
 Route::get('/petugas/{id}/edit', [PetugasController::class, 'edit'])->name('edit.petugas');
 Route::post('/petugas/{id}/edit', [PetugasController::class, 'update'])->name('update.petugas');
-
+Route::delete('/petugas/{id}', [PetugasController::class, 'destroy'])->name('hapus.petugas');
 
 Route::get('/pembayaran', [PembayaranController::class, 'showForm'])->name('pembayaran.form');
 Route::post('/pembayaran', [PembayaranController::class, 'prosesPembayaran'])->name('pembayaran.proses');
@@ -86,6 +86,8 @@ Route::delete('/siswa/delete/{id}', [SiswaController::class, 'destroy'])->name('
 Route::get('/tambah-siswa', [SiswaController::class, 'showForm'])->name('siswa.form');
 // Route untuk menampilkan detail siswa
 Route::post('/siswa/{id}', [SiswaController::class, 'show'])->name('siswa.show');
+Route::get('/dashboard-siswa', [PembayaranController::class, 'index'])->name('dashboard_siswa');
+
 
 // Route untuk menampilkan form tambah data SPP
 Route::get('/tambah/data/spp', [SppController::class, 'create'])->name('tambah.spp');

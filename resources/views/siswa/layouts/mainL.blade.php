@@ -26,7 +26,6 @@
 
     <link href="{{ asset ('assets/css/siswa/LPage.css') }}" rel="stylesheet">
     <link href="{{ asset ('assets/css/siswa/navbar.css') }}" rel="stylesheet">
-    <link href="{{ asset ('assets/css/siswa/contactus.css') }}" rel="stylesheet">
 
     @include('siswa.components.navbar')  {{-- Pastikan navbar ada di sini --}}
 
