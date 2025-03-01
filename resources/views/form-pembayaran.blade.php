@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Pembayaran</title>
+    <link href="{{ asset('assets/css/admin/formPembayaran.css') }}" rel="stylesheet">
 </head>
 <body>
     <h2>Form Pembayaran</h2>

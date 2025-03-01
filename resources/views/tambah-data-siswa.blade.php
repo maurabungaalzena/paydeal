@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Siswa</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="{{ asset('assets/css/admin/tambah-siswa.css') }}" rel="stylesheet">
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
     <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-6xl">
+        <a href="javascript:history.back()" class="back-button">← Back</a>
         <h2 class="text-2xl font-semibold text-center mb-4">Tambah Data Siswa</h2>
 
         @if(session('success'))
