@@ -120,4 +120,6 @@ Route::get('/kelas/{id}/edit', [KelasController::class, 'edit'])->name('kelas.ed
 Route::put('/kelas/{id}', [KelasController::class, 'update'])->name('kelas.update');
 Route::delete('/kelas/{id}', [KelasController::class, 'destroy'])->name('kelas.destroy');
 
+Route::get('/history/{nisn}', [PembayaranController::class, 'history'])->name('history.pembayaran');
+
 
