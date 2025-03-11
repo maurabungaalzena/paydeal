@@ -1,18 +1,14 @@
 /* NAVBAR.CSS */
 body {
     margin: 0;
-    /* Hapus font-family di sini jika sudah didefinisikan di LPage.css
-       atau biarkan jika memang ingin fallback font "Arial" di sini.
-    */
 }
 
-/* Pastikan .navbar tidak override background LPage.css */
 .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px;
-    background-color: #08396d; /* Warna navbar */
+    background-color: #08396d;
     border-radius: 10px;
     margin: 10px;
 }
@@ -108,3 +104,5 @@ body {
         margin: 5px 0;
     }
 }
+
+/* TEST COMMIT */

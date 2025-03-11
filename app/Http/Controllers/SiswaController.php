@@ -79,7 +79,7 @@ class SiswaController extends Controller
     return view('tambah-data-siswa', compact('kelas', 'spp', 'siswa'));
 }
 
-    
+
 
     public function show($id)
     {
@@ -157,6 +157,7 @@ class SiswaController extends Controller
         $siswa = Siswa::findOrFail($id);
         $siswa->delete();
 
-        return redirect()->back()->with('success', 'Siswa berhasil dihapus.');
+        return redirect()->route('siswa.form')->with('success', 'Siswa berhasil dihapus.');
     }
+
 }
