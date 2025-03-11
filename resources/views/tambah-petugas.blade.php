@@ -45,8 +45,11 @@
                             <option value="petugas">Petugas</option>
                         </select>
                     </div>
-                    <button type="submit" class="edit-button">
-                        Tambahkan
+
+                   
+                    <button type="submit"
+                        class="w-full bg-blue-500 text-white px-3 py-2 rounded hover:bg-blue-600 transition"  class="edit-button">
+                        Tambah Petugas
                     </button>
 
                 </form>
@@ -73,6 +76,7 @@
                                 <td class="border border-gray-300 p-2">{{ $p->nama_petugas }}</td>
                                 <td class="border border-gray-300 p-2 text-center capitalize">{{ $p->role }}</td>
                                 <td class="border border-gray-300 p-2 text-center">
+
                                     <div class="flex items-center space-x-2 justify-center">
                                         <a href="{{ route('edit.petugas', $p->id) }}"
                                             class="btn-action bg-blue-500 hover:bg-blue-600">
@@ -88,8 +92,6 @@
                                         </form>
                                     </div>
                                 </td>
-
-
                             </tr>
                         @endforeach
                     </tbody>
