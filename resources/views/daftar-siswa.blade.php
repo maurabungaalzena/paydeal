@@ -1,6 +1,8 @@
-@extends('layouts.app')
+@include('layouts.main')
 
-@section('content')
+@section('title', 'Dashboard - PayDeal')
+
+@section('containerdashboard')
     <div class="container">
         <h2>Daftar Siswa</h2>
         <table class="table table-bordered">

@@ -5,10 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Petugas</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(to right, #0f2c42, #5891b2);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            color: white;
+        }
+        .form-control {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+        }
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .btn-custom {
+            background-color: #ffeb82;
+            color: black;
+            font-weight: bold;
+        }
+    </style>
 </head>
-<body class="d-flex align-items-center justify-content-center vh-100 bg-light">
-
-    <div class="card shadow-lg p-4" style="width: 400px;">
+<body>
+    <div class="card">
         <h3 class="text-center mb-4">Register Petugas</h3>
 
         @if (session('success'))
@@ -17,7 +46,6 @@
 
         <form action="{{ route('register.post') }}" method="POST">
             @csrf
-            
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
                 <input type="text" name="username" id="username" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" required>
@@ -54,11 +82,8 @@
                 @enderror
             </div>
 
-            <button type="submit" class="btn btn-primary w-100">Register</button>
-
-           
+            <button type="submit" class="btn btn-custom w-100">Register</button>
         </form>
     </div>
-
 </body>
 </html>
