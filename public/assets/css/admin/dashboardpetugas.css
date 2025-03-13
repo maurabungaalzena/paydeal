@@ -1,16 +1,34 @@
+/* Navbar tetap di atas */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #001F3F; /* Warna navy */
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000; /* Supaya di atas elemen lain */
+}
+
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to bottom, #ffffff, #0e2741);
+    background: linear-gradient(to bottom, #ffffff 40%, #0e2741 100%);
+    min-height: 100vh; /* Pastikan background mengisi seluruh viewport */
     margin: 0;
     padding: 0;
 }
 
 .container {
-    background: white;
-    padding: 20px;
+    background: rgba(255, 255, 255, 0.98);
+    padding: 35px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgb(51, 49, 49);
-    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 700px;
+    text-align: center;
+    margin-top: 80px; /* Agar form turun ke bawah setelah navbar */
 }
 
 h2, h3 {
@@ -21,7 +39,7 @@ h2, h3 {
 }
 
 .table {
-    background: transparent;
+    background: white; /* Bikin tabel lebih jelas */
     border-radius: 5px;
     overflow: hidden;
     border: 2px solid #ff69b4;
@@ -33,13 +51,15 @@ h2, h3 {
 }
 
 .table tbody tr {
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.9); /* Bikin lebih jelas dengan putih solid */
 }
 
 .btn-primary {
     background-color: #ff69b4;
     border: none;
     font-family: 'Quicksand', sans-serif;
+    padding: 10px 15px;
+    border-radius: 8px;
 }
 
 .btn-primary:hover {

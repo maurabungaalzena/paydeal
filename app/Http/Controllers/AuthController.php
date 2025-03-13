@@ -1,97 +1,73 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Petugas;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Hash;
 
-
 class AuthController extends Controller
 {
     public function signIn(Request $request)
     {
+        // Debugging cek data input user
+        //dd($request->all());
+
         $request->validate([
             'usn' => 'required',
             'password' => 'required',
+            'role' => 'required'
         ]);
 
         if ($request->role == 'petugas') {
-            //? Login Logic Buat Petugas/Admin
-            $credentials = [
-                'username' => $request->usn,
-                'password' => $request->password,
-            ];
+            //? Login Petugas/Admin
+            $petugas = Petugas::where('username', $request->usn)->first();
 
-            // $passBenar = Hash::make($credentials['password']);
-            // $login = Petugas::where('password', $passBenar)->exists();
-            // return $login;
-            // if ($login) {
-            //     $request->session()->regenerate();
-            //     return redirect()->route('dashboard_petugas'); 
-            // }
-
-            //return $credentials
-            $petugas = \App\Models\Petugas::where('username', $credentials['username'])->first();
-
-            if (Auth::guard('petugas')->attempt($credentials)) {
-                // Regenerate session
+            // Pastikan petugas ditemukan dan password cocok
+            if ($petugas && Hash::check($request->password, $petugas->password)) {
+                Auth::guard('petugas')->login($petugas);
                 $request->session()->regenerate();
-        
-                // Simpan role ke session (opsional)
-                session(['role' => Auth::guard('petugas')->user()->role]);
-        
-                // Redirect ke dashboard petugas
+                session(['role' => 'petugas']);
+
                 return redirect()->route('dashboard_petugas');
             }
-        
-            
-            
 
             return back()->withErrors([
-                'username' => 'The provided credentials do not match our records.',
+                'username' => 'Username atau password salah.',
             ])->onlyInput('username');
         }
 
-        //? Login Logic Buat Siswa
-        $credentials = [
-            'nisn' => $request->usn,
-            'password' => $request->password,
-        ];
+        //? Login Siswa
+        $siswa = Siswa::where('nisn', $request->usn)->first();
 
-        if (Auth::guard('siswa')->attempt($credentials)) {
+        if ($siswa && Hash::check($request->password, $siswa->password)) {
+            Auth::guard('siswa')->login($siswa);
             $request->session()->regenerate();
-
-            // Simpan role siswa ke session
             session(['role' => 'siswa']);
 
-            return redirect()->intended(route('dashboard_siswa'));
+            return redirect()->route('dashboard_siswa');
         }
 
         return back()->withErrors([
-            'nisn' => 'The provided credentials do not match our records.',
+            'nisn' => 'Username atau password salah.',
         ])->onlyInput('nisn');
     }
 
     public function logoutAdmin(Request $request): RedirectResponse
     {
         Auth::guard('petugas')->logout();
-
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-
         return redirect('/');
     }
 
     public function logoutSiswa(Request $request): RedirectResponse
     {
         Auth::guard('siswa')->logout();
-
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-
         return redirect('/');
     }
 }
