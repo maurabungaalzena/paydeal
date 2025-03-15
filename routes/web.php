@@ -123,3 +123,5 @@ Route::delete('/kelas/{id}', [KelasController::class, 'destroy'])->name('kelas.d
 Route::get('/history/{nisn}', [PembayaranController::class, 'history'])->name('history.pembayaran');
 
 
+
+

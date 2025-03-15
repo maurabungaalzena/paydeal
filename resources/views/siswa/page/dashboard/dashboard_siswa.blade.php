@@ -1,3 +1,9 @@
+@include('siswa.layouts.mainAL')
+
+@section('title', 'Dashboard siswa - PayDeal')
+
+@section('containerdashboard')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
