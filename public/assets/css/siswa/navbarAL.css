@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Atur body agar background penuh */
+body {
+    background: linear-gradient(to bottom, #d8e8eb, #0e2741);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+/* Membuat container utama agar mengisi ruang yang tersisa */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Atur konten agar tetap dalam batas yang rapi */
+.container {
+    width: 90%;
+    max-width: 1200px;
+}
+
+/* Perbaiki tampilan tabel agar lebih rapi */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.table th, .table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Warna header tabel */
+.table thead {
+    background: #0e2741;
+    color: white;
+}
+
+/* Perbaiki footer agar selalu di bawah */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #0e2741;
+    color: white;
+    width: 100%;
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #08396d; 
+    border-radius: 10px;
+    padding: 15px 30px;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+}
+
+.navbar-menu {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.navbar-menu a:hover {
+    text-decoration: underline;
+}
+
+.navbar-menu button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.navbar-menu button:hover {
+    text-decoration: underline;
+}

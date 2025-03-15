@@ -14,8 +14,8 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to bottom, #ffffff 40%, #0e2741 100%);
-    min-height: 100vh; /* Pastikan background mengisi seluruh viewport */
+    background: linear-gradient(to bottom, #d8e8eb, #0e2741 100%);
+    min-height: 100vh; 
     margin: 0;
     padding: 0;
 }

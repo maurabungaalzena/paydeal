@@ -46,7 +46,6 @@
                         </select>
                     </div>
 
-                   
                     <button type="submit"
                         class="w-full bg-blue-500 text-white px-3 py-2 rounded hover:bg-blue-600 transition"  class="edit-button">
                         Tambah Petugas

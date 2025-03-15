@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <style>
         body {
-            background: linear-gradient(to right, #0f2c42, #5891b2);
+            background: linear-gradient(to right, #031f2c, #8dd4fd);
             height: 100vh;
             display: flex;
             align-items: center;
@@ -33,6 +33,15 @@
             background-color: #ffeb82;
             color: black;
             font-weight: bold;
+            border: none;
+        }
+
+        .btn-custom:hover,
+        .btn-custom:focus,
+        .btn-custom:active {
+            background-color: #ffeb82 !important;
+            color: black !important;
+            box-shadow: none !important;
         }
     </style>
 </head>

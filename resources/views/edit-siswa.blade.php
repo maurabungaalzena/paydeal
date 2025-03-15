@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Siswa</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="{{ asset('assets/css/admin/formPembayaran.css') }}" rel="stylesheet">
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
     <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl">

@@ -1,6 +1,6 @@
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to bottom, #ffffff, #0e2741); /* Gradasi putih ke navy */
+    background: linear-gradient(to bottom, #d8e8eb, #0e2741); /* Gradasi putih ke navy */
     margin: 0;
     padding: 0;
     align-items: center;
@@ -14,14 +14,16 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     width: 90%;
-    max-width: 1000px;
-    min-height: 90vh; /* Tambahkan min-height agar form dan tabel seimbang */
+    max-width: 1200px; /* Memperlebar tampilan */
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    max-width: 95%; /* Memperlebar container */
+    min-height: 90vh;
 }
 
-.bg-white{
+.bg-white {
     justify-content: center !important;
     align-items: center !important;
 }
@@ -38,6 +40,30 @@ form {
     padding: 20px;
     border-radius: 8px;
     flex-grow: 1; /* Membuat form mengisi ruang yang tersedia */
+}
+
+.form-table-container {
+    display: flex;
+    gap: 20px; /* Jarak antara card form dan tabel */
+    justify-content: space-between;
+}
+
+/* Card Form Tambah Siswa */
+.card-form {
+    flex: 1.2; /* Memperbesar form */
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Tabel Daftar Siswa */
+.card-table {
+    flex: 1; /* Lebih kecil dari form */
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 input, select {
@@ -165,37 +191,14 @@ table tbody tr:hover {
     background-color: #A71D2A;
 }
 
-/* Warna tombol back diubah menjadi kuning */
-.back-button {
-    background-color: #fde36d;
-    color: black;
-    padding: 10px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 14px;
-    display: inline-block;
-    margin-bottom: 15px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.back-button:hover {
-    background-color: #fcd535;
-}
-
-/* Responsive untuk layar kecil */
+/* Responsif untuk layar kecil */
 @media (max-width: 768px) {
-    table th, table td {
-        font-size: 12px;
-        padding: 8px;
+    .form-table-container {
+        flex-direction: column;
     }
-
-    .btn-container {
-        gap: 3px; /* Kurangi jarak antar tombol di layar kecil */
-    }
-
-    .btn-action {
-        font-size: 12px;
-        padding: 5px 8px;
+    
+    .card-form, .card-table {
+        width: 100%;
     }
 }
+

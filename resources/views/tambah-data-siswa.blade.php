@@ -15,7 +15,6 @@
 </head>
 <body >
     <div class="container p-6 rounded-lg shadow-lg w-full max-w-6xl">
-        <a href="javascript:history.back()" class="back-button">← Back</a>
         <h2 class="text-2xl font-semibold text-center mb-4">Tambah Data Siswa</h2>
 
         @if(session('success'))

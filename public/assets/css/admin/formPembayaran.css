@@ -1,7 +1,7 @@
 /* Gunakan font yang sesuai */
 body {
     font-family: 'Mulish', sans-serif;
-    background: linear-gradient(to bottom, #ffffff, #0e2741);
+    background: linear-gradient(to bottom, #d8e8eb, #0e2741);
     margin: 0;
     padding: 0;
     align-items: center;
@@ -23,7 +23,7 @@ body {
 /* Judul Form */
 h2 {
     color: #001F3F;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-weight: bold;
     text-align: center;
     font-size: 24px;
@@ -62,13 +62,12 @@ button {
     width: 100%;
     background-color: #001F3F; /* Navy */
     color: white;
-    padding: 12px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
     transition: 0.3s;
-    margin-top: 15px;
+ 
     font-weight: bold;
 }
 

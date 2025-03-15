@@ -40,7 +40,7 @@ class PembayaranController extends Controller
             'tanggal_bayar' => $request->tgl_bayar,
             'bulan_dibayar' => $request->bulan_dibayar,
             'tahun_dibayar' => $request->tahun_dibayar,
-            'jumlah_bayar' => str_replace('.', '', $request->jumlah_bayar),
+           'jumlah_bayar' => (int) str_replace(['.', ','], '', $request->jumlah_bayar),
         ]);
 
         if (!$pembayaran) {
@@ -66,4 +66,13 @@ class PembayaranController extends Controller
 
         return view('siswa.page.dashboard.dashboard_siswa', compact('pembayaran', 'totalPembayaran', 'sisaPembayaran'));
     }
+
+    public function history($nisn)
+{
+    $siswa = Siswa::where('nisn', $nisn)->firstOrFail();
+    $pembayaran = Pembayaran::where('nisn', $nisn)->orderBy('tanggal_bayar', 'desc')->get();
+
+    return view('siswa.page.history', compact('siswa', 'pembayaran'));
+}
+
 } 
