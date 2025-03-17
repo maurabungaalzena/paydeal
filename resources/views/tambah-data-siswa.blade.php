@@ -13,18 +13,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="{{ asset('assets/css/admin/tambah-siswa.css') }}" rel="stylesheet">
 </head>
-<body >
+<body>
     <div class="container p-6 rounded-lg shadow-lg w-full max-w-6xl">
-        <h2 class="text-2xl font-semibold text-center mb-4">Tambah Data Siswa</h2>
+        <h2 class="text-2xl font-semibold text-center mb-4 add-student">Tambah Data Siswa</h2>
+        <hr>
 
         @if(session('success'))
             <p class="text-green-600 text-center mb-4">{{ session('success') }}</p>
         @endif
 
-        <div class="grid grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 gap-4">
             <!-- Form Tambah Siswa -->
-            <div class="bg-gray-50 p-4 rounded-lg shadow">
-                <h3 class="text-xl font-semibold mb-3">Tambah Siswa</h3>
+            <div class="bg-gray-50 p-4 rounded-lg shadow border-siswa container">
+                <h3 class="text-xl font-semibold mb-3 add-student">Tambah Siswa</h3>
+                <hr>
                 <form action="{{ route('tambah.siswa') }}" method="POST">
                     @csrf
 
@@ -85,8 +87,9 @@
             </div>
 
             <!-- Daftar Siswa -->
-            <div class="bg-gray-50 p-4 rounded-lg shadow">
-                <h3 class="text-xl font-semibold mb-3">Daftar Siswa</h3>
+            <div class="bg-gray-50 p-4 rounded-lg shadow border-siswa container">
+                <h3 class="text-xl font-semibold mb-3 add-student">Daftar Siswa</h3>
+                <hr>
                 <table class="w-full border-collapse border border-gray-300">
                     <thead class="bg-gray-200">
                         <tr>
@@ -109,12 +112,12 @@
                                 <td class="border border-gray-300 p-2">{{ $s->alamat }}</td>
                                 <td class="border border-gray-300 p-2">{{ $s->no_telp }}</td>
                                 <td class="border border-gray-300 p-2 text-center">
-                                    <a href="{{ route('siswa.edit', $s->id) }}" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
+                                    <a href="{{ route('siswa.edit', $s->id) }}" class="bg-blue-500 text-white px-1 py-1 rounded hover:bg-blue-600">
                                         Edit
                                     </a>
-                                    <button onclick="confirmDelete({{ $s->id }})" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 ml-2">
+                                    <a onclick="confirmDelete({{ $s->id }})" class="bg-red-500 text-white px-1 py-1 rounded hover:bg-red-600 ml-2">
                                         Hapus
-                                    </button>
+                                    </a>
                                     <form id="delete-form-{{ $s->id }}" action="{{ route('siswa.destroy', $s->id) }}" method="POST" style="display: none;">
                                         @csrf
                                         @method('DELETE')

@@ -1,6 +1,6 @@
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to bottom, #d8e8eb, #0e2741); /* Gradasi putih ke navy */
+    background: linear-gradient(to bottom, #e9eef5, #1e4488);
     margin: 0;
     padding: 0;
     display: flex;
@@ -59,7 +59,7 @@ button:hover, .edit-button:hover {
 
 button {
     width: 100%;
-    background-color: #001F3F; 
+    background-color: #001F3F;
     color: white;
     padding: 12px;
     border: none;

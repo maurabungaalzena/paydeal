@@ -14,11 +14,14 @@
 </head> -->
 <body>
 
-<div class="container mt-4">
-    <h2 class="text-center">Selamat Datang di Dashboard Petugas</h2>
-    <p class="text-center">Anda dapat mengelola pembayaran SPP dan melihat histori transaksi di sini.</p>
+<div class="container mt-6">
+    <div class="judul-awal">
+        <h2 class="text-center Judul">Selamat Datang di Dashboard Petugas</h2>
+        <p class="text-center Judul-2">Anda dapat mengelola pembayaran SPP dan melihat histori transaksi di sini.</p>
+    </div>
 
-    <h3>Informasi Petugas</h3>
+    <hr>
+    <h3 class="information">Informasi Petugas</h3>
     <a href="{{ route('petugas.form') }}" class="btn btn-primary mb-3">Tambah Petugas</a>
     <table class="table table-bordered">
         <thead>

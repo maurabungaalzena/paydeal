@@ -13,15 +13,6 @@ body {
     margin: 0;
 }
 
-/* Membuat container utama agar mengisi ruang yang tersisa */
-main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
 
 /* Atur konten agar tetap dalam batas yang rapi */
 .container {
@@ -62,7 +53,7 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #08396d; 
+    background-color: #08396d;
     border-radius: 10px;
     padding: 15px 30px;
 }
